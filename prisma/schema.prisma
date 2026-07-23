@@ -30,6 +30,25 @@ enum PaymentStatus {
   REFUNDED
 }
 
+model SiteContent {
+  id               String   @id @default("main_site_content")
+  heroTag          String   @default("AUTHORITATIVE • DYNAMIC • PREMIUM")
+  heroTitle        String   @default("Transform Your Professional Identity With Strategic Mentorship.")
+  heroSubtext      String   @default("Empowering high-level professionals to command authority and achieve energetic prestige in their careers through curated LinkedIn strategies and 1:1 wisdom sessions.")
+  mentorName       String   @default("Diileep Kumar Sathyadasan")
+  mentorRole       String   @default("Strategic Executive Career Mentor")
+  mentorImageUrl   String   @default("https://lh3.googleusercontent.com/aida/AP1WRLv39MngB3vq533uO2okUmuM0bGY9vC77Z2YYFJbEH2eM2AsSiEgvH00u9MScf-z3A_7W4HMnF1gZx-GtddmEgEcMY3apFqd5HKCIFr0gzkX63r0tH9IY2BuAZwFgw9roqqb9CXIHMTJd3iGdQwhrvjSGDARHGGtsPyeh8znHqRawq-WvRk3YoV5pcjjln_69cFQd1WEIJBIvNTpjXMTDG8pTn0qb4cDCI1W3fMpvb1wLPIeKC-15Tohq0g")
+  stat1Value       String   @default("500+")
+  stat1Label       String   @default("MENTEES GUIDED")
+  stat2Value       String   @default("₹15Cr+")
+  stat2Label       String   @default("SALARY HIKES SECURED")
+  stat3Value       String   @default("100+")
+  stat3Label       String   @default("LINKEDIN OPTIMIZATIONS")
+  stat4Value       String   @default("15+")
+  stat4Label       String   @default("YEARS EXPERIENCE")
+  updatedAt        DateTime @updatedAt
+}
+
 model Mentee {
   id               String               @id @default(uuid())
   name             String

@@ -8,6 +8,26 @@ CREATE TYPE "BookingType" AS ENUM ('DISCOVERY_CALL', 'MENTORSHIP_1ON1', 'MOCK_IN
 CREATE TYPE "BookingStatus" AS ENUM ('PENDING', 'CONFIRMED', 'COMPLETED', 'CANCELLED');
 CREATE TYPE "PaymentStatus" AS ENUM ('PENDING', 'SUCCESS', 'FAILED', 'REFUNDED');
 
+-- 0. SiteContent CMS Table
+CREATE TABLE IF NOT EXISTS "SiteContent" (
+    "id" TEXT NOT NULL PRIMARY KEY DEFAULT 'main_site_content',
+    "heroTag" TEXT NOT NULL DEFAULT 'AUTHORITATIVE • DYNAMIC • PREMIUM',
+    "heroTitle" TEXT NOT NULL DEFAULT 'Transform Your Professional Identity With Strategic Mentorship.',
+    "heroSubtext" TEXT NOT NULL DEFAULT 'Empowering high-level professionals to command authority and achieve energetic prestige in their careers through curated LinkedIn strategies and 1:1 wisdom sessions.',
+    "mentorName" TEXT NOT NULL DEFAULT 'Diileep Kumar Sathyadasan',
+    "mentorRole" TEXT NOT NULL DEFAULT 'Strategic Executive Career Mentor',
+    "mentorImageUrl" TEXT NOT NULL DEFAULT 'https://lh3.googleusercontent.com/aida/AP1WRLv39MngB3vq533uO2okUmuM0bGY9vC77Z2YYFJbEH2eM2AsSiEgvH00u9MScf-z3A_7W4HMnF1gZx-GtddmEgEcMY3apFqd5HKCIFr0gzkX63r0tH9IY2BuAZwFgw9roqqb9CXIHMTJd3iGdQwhrvjSGDARHGGtsPyeh8znHqRawq-WvRk3YoV5pcjjln_69cFQd1WEIJBIvNTpjXMTDG8pTn0qb4cDCI1W3fMpvb1wLPIeKC-15Tohq0g',
+    "stat1Value" TEXT NOT NULL DEFAULT '500+',
+    "stat1Label" TEXT NOT NULL DEFAULT 'MENTEES GUIDED',
+    "stat2Value" TEXT NOT NULL DEFAULT '₹15Cr+',
+    "stat2Label" TEXT NOT NULL DEFAULT 'SALARY HIKES SECURED',
+    "stat3Value" TEXT NOT NULL DEFAULT '100+',
+    "stat3Label" TEXT NOT NULL DEFAULT 'LINKEDIN OPTIMIZATIONS',
+    "stat4Value" TEXT NOT NULL DEFAULT '15+',
+    "stat4Label" TEXT NOT NULL DEFAULT 'YEARS EXPERIENCE',
+    "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
 -- 1. Mentee Table
 CREATE TABLE IF NOT EXISTS "Mentee" (
     "id" TEXT NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4()::text,

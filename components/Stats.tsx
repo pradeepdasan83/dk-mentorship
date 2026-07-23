@@ -1,13 +1,35 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function Stats() {
+  const [statsData, setStatsData] = useState({
+    stat1Value: '500+',
+    stat1Label: 'MENTEES GUIDED',
+    stat2Value: '₹15Cr+',
+    stat2Label: 'SALARY HIKES SECURED',
+    stat3Value: '100+',
+    stat3Label: 'LINKEDIN OPTIMIZATIONS',
+    stat4Value: '15+',
+    stat4Label: 'YEARS EXPERIENCE',
+  });
+
+  useEffect(() => {
+    fetch('/api/content')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && data.content) {
+          setStatsData((prev) => ({ ...prev, ...data.content }));
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   const stats = [
-    { value: '500+', label: 'MENTEES GUIDED', highlight: 'text-primary' },
-    { value: '₹15Cr+', label: 'SALARY HIKES SECURED', highlight: 'text-secondary font-extrabold' },
-    { value: '100+', label: 'LINKEDIN OPTIMIZATIONS', highlight: 'text-primary' },
-    { value: '15+', label: 'YEARS EXPERIENCE', highlight: 'text-secondary font-extrabold' },
+    { value: statsData.stat1Value, label: statsData.stat1Label, highlight: 'text-primary' },
+    { value: statsData.stat2Value, label: statsData.stat2Label, highlight: 'text-secondary font-extrabold' },
+    { value: statsData.stat3Value, label: statsData.stat3Label, highlight: 'text-primary' },
+    { value: statsData.stat4Value, label: statsData.stat4Label, highlight: 'text-secondary font-extrabold' },
   ];
 
   return (

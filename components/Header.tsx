@@ -43,8 +43,12 @@ export default function Header({ onOpenDiscoveryModal, onOpenContactModal }: Hea
           >
             Contact
           </button>
+          <Link href="/admin/cms" className="text-xs font-mono bg-secondary-container text-on-secondary-container px-3 py-1.5 rounded-full hover:opacity-90 font-bold transition-all flex items-center gap-1">
+            <span className="material-symbols-outlined text-sm">edit_note</span>
+            <span>CMS Editor</span>
+          </Link>
           <Link href="/admin/bookings" className="text-xs font-mono bg-surface-container-high px-3 py-1.5 rounded-full text-on-surface-variant hover:text-primary transition-all">
-            Dashboard
+            DB Logs
           </Link>
         </div>
 
@@ -120,11 +124,18 @@ export default function Header({ onOpenDiscoveryModal, onOpenContactModal }: Hea
             Contact
           </button>
           <Link
+            href="/admin/cms"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block text-sm font-mono text-secondary pt-2 border-t border-outline-variant/10 font-bold"
+          >
+            ✏️ CMS Content Editor
+          </Link>
+          <Link
             href="/admin/bookings"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-sm font-mono text-secondary pt-2 border-t border-outline-variant/10"
+            className="block text-sm font-mono text-on-surface-variant"
           >
-            → Admin Submissions Dashboard
+            📊 DB Submissions Dashboard
           </Link>
         </div>
       )}

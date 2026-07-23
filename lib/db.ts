@@ -34,15 +34,6 @@ export interface ServiceAppInput {
   transactionId?: string;
 }
 
-export interface PaymentInput {
-  name: string;
-  email: string;
-  amount: number;
-  paymentToken?: string;
-  transactionId: string;
-  serviceTitle: string;
-}
-
 export interface ContactInput {
   name: string;
   email: string;
@@ -50,14 +41,91 @@ export interface ContactInput {
   message: string;
 }
 
+export interface SiteContentInput {
+  heroTag?: string;
+  heroTitle?: string;
+  heroSubtext?: string;
+  mentorName?: string;
+  mentorRole?: string;
+  mentorImageUrl?: string;
+  stat1Value?: string;
+  stat1Label?: string;
+  stat2Value?: string;
+  stat2Label?: string;
+  stat3Value?: string;
+  stat3Label?: string;
+  stat4Value?: string;
+  stat4Label?: string;
+}
+
 // In-memory fallback store for robust operational guarantee
 const fallbackStore = {
+  content: {
+    heroTag: "AUTHORITATIVE • DYNAMIC • PREMIUM",
+    heroTitle: "Transform Your Professional Identity With Strategic Mentorship.",
+    heroSubtext: "Empowering high-level professionals to command authority and achieve energetic prestige in their careers through curated LinkedIn strategies and 1:1 wisdom sessions.",
+    mentorName: "Diileep Kumar Sathyadasan",
+    mentorRole: "Strategic Executive Career Mentor",
+    mentorImageUrl: "https://lh3.googleusercontent.com/aida/AP1WRLv39MngB3vq533uO2okUmuM0bGY9vC77Z2YYFJbEH2eM2AsSiEgvH00u9MScf-z3A_7W4HMnF1gZx-GtddmEgEcMY3apFqd5HKCIFr0gzkX63r0tH9IY2BuAZwFgw9roqqb9CXIHMTJd3iGdQwhrvjSGDARHGGtsPyeh8znHqRawq-WvRk3YoV5pcjjln_69cFQd1WEIJBIvNTpjXMTDG8pTn0qb4cDCI1W3fMpvb1wLPIeKC-15Tohq0g",
+    stat1Value: "500+",
+    stat1Label: "MENTEES GUIDED",
+    stat2Value: "₹15Cr+",
+    stat2Label: "SALARY HIKES SECURED",
+    stat3Value: "100+",
+    stat3Label: "LINKEDIN OPTIMIZATIONS",
+    stat4Value: "15+",
+    stat4Label: "YEARS EXPERIENCE",
+  },
   mentees: [] as any[],
   bookings: [] as any[],
   serviceApps: [] as any[],
   payments: [] as any[],
   contacts: [] as any[],
 };
+
+export async function getSiteContent() {
+  try {
+    const db = getPrisma();
+    if (!db) return { content: fallbackStore.content, source: 'memory' };
+
+    let content = await db.siteContent.findUnique({
+      where: { id: 'main_site_content' },
+    });
+
+    if (!content) {
+      content = await db.siteContent.create({
+        data: { id: 'main_site_content' },
+      });
+    }
+
+    return { content, source: 'postgresql' };
+  } catch (error) {
+    console.warn('PostgreSQL content fallback to memory:', error);
+    return { content: fallbackStore.content, source: 'memory' };
+  }
+}
+
+export async function updateSiteContent(data: SiteContentInput) {
+  try {
+    const db = getPrisma();
+    if (!db) {
+      fallbackStore.content = { ...fallbackStore.content, ...data };
+      return { success: true, content: fallbackStore.content, source: 'memory' };
+    }
+
+    const content = await db.siteContent.upsert({
+      where: { id: 'main_site_content' },
+      update: { ...data },
+      create: { id: 'main_site_content', ...data },
+    });
+
+    return { success: true, content, source: 'postgresql' };
+  } catch (error) {
+    console.warn('PostgreSQL content update fallback:', error);
+    fallbackStore.content = { ...fallbackStore.content, ...data };
+    return { success: true, content: fallbackStore.content, source: 'memory' };
+  }
+}
 
 export async function saveBooking(data: BookingInput) {
   try {
