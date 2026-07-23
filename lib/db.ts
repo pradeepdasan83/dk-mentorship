@@ -85,8 +85,8 @@ const fallbackStore = {
 
 export async function getSiteContent() {
   try {
-    const db = getPrisma();
-    if (!db) return { content: fallbackStore.content, source: 'memory' };
+    const db = getPrisma() as any;
+    if (!db || !db.siteContent) return { content: fallbackStore.content, source: 'memory' };
 
     let content = await db.siteContent.findUnique({
       where: { id: 'main_site_content' },
@@ -107,8 +107,8 @@ export async function getSiteContent() {
 
 export async function updateSiteContent(data: SiteContentInput) {
   try {
-    const db = getPrisma();
-    if (!db) {
+    const db = getPrisma() as any;
+    if (!db || !db.siteContent) {
       fallbackStore.content = { ...fallbackStore.content, ...data };
       return { success: true, content: fallbackStore.content, source: 'memory' };
     }
@@ -129,8 +129,8 @@ export async function updateSiteContent(data: SiteContentInput) {
 
 export async function saveBooking(data: BookingInput) {
   try {
-    const db = getPrisma();
-    if (!db) throw new Error('Database client not initialized');
+    const db = getPrisma() as any;
+    if (!db || !db.mentee) throw new Error('Database client not initialized');
 
     let mentee = await db.mentee.findUnique({
       where: { email: data.email },
@@ -193,8 +193,8 @@ export async function saveBooking(data: BookingInput) {
 
 export async function saveServiceApplication(data: ServiceAppInput) {
   try {
-    const db = getPrisma();
-    if (!db) throw new Error('Database client not initialized');
+    const db = getPrisma() as any;
+    if (!db || !db.mentee) throw new Error('Database client not initialized');
 
     let mentee = await db.mentee.findUnique({
       where: { email: data.email },
@@ -276,8 +276,8 @@ export async function saveServiceApplication(data: ServiceAppInput) {
 
 export async function saveContactMessage(data: ContactInput) {
   try {
-    const db = getPrisma();
-    if (!db) throw new Error('Database client not initialized');
+    const db = getPrisma() as any;
+    if (!db || !db.contactMessage) throw new Error('Database client not initialized');
 
     const contact = await db.contactMessage.create({
       data: {
@@ -302,8 +302,8 @@ export async function saveContactMessage(data: ContactInput) {
 
 export async function getAllSubmissions() {
   try {
-    const db = getPrisma();
-    if (!db) {
+    const db = getPrisma() as any;
+    if (!db || !db.booking) {
       return {
         bookings: fallbackStore.bookings,
         applications: fallbackStore.serviceApps,
