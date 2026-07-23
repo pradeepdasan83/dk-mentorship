@@ -1,4 +1,4 @@
-import { prisma } from './prisma';
+import { getPrisma } from './prisma';
 
 export interface MenteeInput {
   name: string;
@@ -61,13 +61,15 @@ const fallbackStore = {
 
 export async function saveBooking(data: BookingInput) {
   try {
-    // Attempt Prisma / PostgreSQL insert
-    let mentee = await prisma.mentee.findUnique({
+    const db = getPrisma();
+    if (!db) throw new Error('Database client not initialized');
+
+    let mentee = await db.mentee.findUnique({
       where: { email: data.email },
     });
 
     if (!mentee) {
-      mentee = await prisma.mentee.create({
+      mentee = await db.mentee.create({
         data: {
           name: data.name,
           email: data.email,
@@ -77,7 +79,7 @@ export async function saveBooking(data: BookingInput) {
       });
     }
 
-    const booking = await prisma.booking.create({
+    const booking = await db.booking.create({
       data: {
         menteeId: mentee.id,
         type: data.type,
@@ -94,7 +96,7 @@ export async function saveBooking(data: BookingInput) {
 
     return { success: true, booking, source: 'postgresql' };
   } catch (error) {
-    console.warn('PostgreSQL database connection fallback to in-memory store:', error);
+    console.warn('PostgreSQL database fallback to memory:', error);
 
     const menteeId = `mentee_${Date.now()}`;
     const booking = {
@@ -123,12 +125,15 @@ export async function saveBooking(data: BookingInput) {
 
 export async function saveServiceApplication(data: ServiceAppInput) {
   try {
-    let mentee = await prisma.mentee.findUnique({
+    const db = getPrisma();
+    if (!db) throw new Error('Database client not initialized');
+
+    let mentee = await db.mentee.findUnique({
       where: { email: data.email },
     });
 
     if (!mentee) {
-      mentee = await prisma.mentee.create({
+      mentee = await db.mentee.create({
         data: {
           name: data.name,
           email: data.email,
@@ -141,7 +146,7 @@ export async function saveServiceApplication(data: ServiceAppInput) {
 
     const transactionId = data.transactionId || `gpay_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
 
-    const payment = await prisma.payment.create({
+    const payment = await db.payment.create({
       data: {
         menteeId: mentee.id,
         amount: data.priceAmount,
@@ -153,7 +158,7 @@ export async function saveServiceApplication(data: ServiceAppInput) {
       },
     });
 
-    const app = await prisma.serviceApplication.create({
+    const app = await db.serviceApplication.create({
       data: {
         menteeId: mentee.id,
         serviceTitle: data.serviceTitle,
@@ -203,7 +208,10 @@ export async function saveServiceApplication(data: ServiceAppInput) {
 
 export async function saveContactMessage(data: ContactInput) {
   try {
-    const contact = await prisma.contactMessage.create({
+    const db = getPrisma();
+    if (!db) throw new Error('Database client not initialized');
+
+    const contact = await db.contactMessage.create({
       data: {
         name: data.name,
         email: data.email,
@@ -226,19 +234,30 @@ export async function saveContactMessage(data: ContactInput) {
 
 export async function getAllSubmissions() {
   try {
-    const bookings = await prisma.booking.findMany({
+    const db = getPrisma();
+    if (!db) {
+      return {
+        bookings: fallbackStore.bookings,
+        applications: fallbackStore.serviceApps,
+        payments: fallbackStore.payments,
+        contacts: fallbackStore.contacts,
+        source: 'memory',
+      };
+    }
+
+    const bookings = await db.booking.findMany({
       include: { mentee: true, payment: true },
       orderBy: { createdAt: 'desc' },
     });
-    const applications = await prisma.serviceApplication.findMany({
+    const applications = await db.serviceApplication.findMany({
       include: { mentee: true, payment: true },
       orderBy: { createdAt: 'desc' },
     });
-    const payments = await prisma.payment.findMany({
+    const payments = await db.payment.findMany({
       include: { mentee: true },
       orderBy: { createdAt: 'desc' },
     });
-    const contacts = await prisma.contactMessage.findMany({
+    const contacts = await db.contactMessage.findMany({
       orderBy: { createdAt: 'desc' },
     });
 
