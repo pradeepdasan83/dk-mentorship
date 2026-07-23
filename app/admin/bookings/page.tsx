@@ -2,8 +2,9 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import AdminGuard from '@/components/AdminGuard';
 
-export default function AdminSubmissionsPage() {
+function SubmissionsContent() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -32,7 +33,7 @@ export default function AdminSubmissionsPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-surface-container-low text-on-surface p-4 md:p-8">
+    <div className="p-4 md:p-8">
       <div className="max-w-container-max mx-auto space-y-6">
         {/* Top Bar */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-surface-container-lowest p-6 rounded-3xl border border-outline-variant/15 shadow-sm">
@@ -309,5 +310,13 @@ export default function AdminSubmissionsPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function AdminSubmissionsPage() {
+  return (
+    <AdminGuard>
+      <SubmissionsContent />
+    </AdminGuard>
   );
 }

@@ -2,8 +2,9 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import AdminGuard from '@/components/AdminGuard';
 
-export default function CMSAdminPage() {
+function CMSContent() {
   const [formData, setFormData] = useState({
     heroTag: 'AUTHORITATIVE • DYNAMIC • PREMIUM',
     heroTitle: 'Transform Your Professional Identity With Strategic Mentorship.',
@@ -71,7 +72,7 @@ export default function CMSAdminPage() {
   };
 
   return (
-    <div className="min-h-screen bg-surface-container-low text-on-surface p-4 md:p-8">
+    <div className="p-4 md:p-8">
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Header Bar */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-surface-container-lowest p-6 rounded-3xl border border-outline-variant/15 shadow-sm">
@@ -332,5 +333,13 @@ export default function CMSAdminPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function CMSAdminPage() {
+  return (
+    <AdminGuard>
+      <CMSContent />
+    </AdminGuard>
   );
 }
