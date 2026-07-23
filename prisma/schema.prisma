@@ -1,0 +1,105 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum BookingType {
+  DISCOVERY_CALL
+  MENTORSHIP_1ON1
+  MOCK_INTERVIEW
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCESS
+  FAILED
+  REFUNDED
+}
+
+model Mentee {
+  id               String               @id @default(uuid())
+  name             String
+  email            String               @unique
+  phone            String?
+  linkedinUrl      String?
+  currentRole      String?
+  company          String?
+  createdAt        DateTime             @default(now())
+  updatedAt        DateTime             @updatedAt
+  bookings         Booking[]
+  applications     ServiceApplication[]
+  payments         Payment[]
+  contactMessages  ContactMessage[]
+}
+
+model Booking {
+  id              String        @id @default(uuid())
+  menteeId        String
+  mentee          Mentee        @relation(fields: [menteeId], references: [id], onDelete: Cascade)
+  type            BookingType   @default(DISCOVERY_CALL)
+  serviceName     String
+  preferredDate   String
+  preferredTime   String
+  goals           String?
+  status          BookingStatus @default(PENDING)
+  notes           String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  payment         Payment?
+}
+
+model ServiceApplication {
+  id              String        @id @default(uuid())
+  menteeId        String
+  mentee          Mentee        @relation(fields: [menteeId], references: [id], onDelete: Cascade)
+  serviceTitle    String
+  priceAmount     Float
+  status          String        @default("SUBMITTED")
+  notes           String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  paymentId       String?       @unique
+  payment         Payment?      @relation(fields: [paymentId], references: [id])
+}
+
+model Payment {
+  id                  String             @id @default(uuid())
+  menteeId            String
+  mentee              Mentee             @relation(fields: [menteeId], references: [id], onDelete: Cascade)
+  amount              Float
+  currency            String             @default("INR")
+  paymentMethod       String             @default("GPAY")
+  paymentToken        String?
+  transactionId       String             @unique
+  status              PaymentStatus      @default(SUCCESS)
+  bookingId           String?            @unique
+  booking             Booking?           @relation(fields: [bookingId], references: [id])
+  serviceApplication  ServiceApplication?
+  createdAt           DateTime           @default(now())
+  updatedAt           DateTime           @updatedAt
+}
+
+model ContactMessage {
+  id          String   @id @default(uuid())
+  menteeId    String?
+  mentee      Mentee?  @relation(fields: [menteeId], references: [id])
+  name        String
+  email       String
+  subject     String
+  message     String
+  createdAt   DateTime @default(now())
+}

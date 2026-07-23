@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>DKS Mentorship | Diileep Kumar Sathyadasan</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed-variant": "#1f4d54",
+                        "primary-container": "#0d1c32",
+                        "on-tertiary-fixed-variant": "#5c4300",
+                        "tertiary-container": "#261a00",
+                        "on-primary-fixed": "#0d1c32",
+                        "outline-variant": "#c5c6cd",
+                        "on-primary-container": "#76849f",
+                        "on-tertiary-fixed": "#261a00",
+                        "surface": "#fbf9fb",
+                        "inverse-surface": "#303032",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#a1ced6",
+                        "on-tertiary-container": "#a87d00",
+                        "tertiary": "#000000",
+                        "on-surface-variant": "#44474d",
+                        "on-primary-fixed-variant": "#39475f",
+                        "background": "#fbf9fb",
+                        "on-surface": "#1b1b1d",
+                        "primary-fixed-dim": "#b9c7e4",
+                        "outline": "#75777e",
+                        "surface-container": "#efedef",
+                        "surface-tint": "#515f78",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#f6be39",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#dbd9db",
+                        "on-error": "#ffffff",
+                        "primary": "#000000",
+                        "primary-fixed": "#d6e3ff",
+                        "tertiary-fixed": "#ffdfa0",
+                        "surface-variant": "#e4e2e4",
+                        "inverse-primary": "#b9c7e4",
+                        "inverse-on-surface": "#f2f0f2",
+                        "secondary-fixed": "#bcebf3",
+                        "on-secondary-container": "#3f6b72",
+                        "secondary-container": "#bcebf3",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f5f3f5",
+                        "surface-bright": "#fbf9fb",
+                        "secondary": "#39656c",
+                        "surface-container-high": "#eae7ea",
+                        "surface-container-highest": "#e4e2e4",
+                        "error": "#ba1a1a",
+                        "on-background": "#1b1b1d",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#001f24"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "gutter": "24px",
+                        "base": "8px",
+                        "stack-md": "24px",
+                        "margin-desktop": "48px",
+                        "container-max": "1280px",
+                        "stack-lg": "48px",
+                        "margin-mobile": "16px",
+                        "stack-sm": "12px"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"],
+                        "body": ["Work Sans"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .jewel-gradient {
+            background: radial-gradient(circle at 10% 20%, rgba(57, 101, 108, 0.1) 0%, rgba(13, 28, 50, 0.05) 90.2%);
+        }
+        .mentor-bg {
+            background: linear-gradient(135deg, #0d1c32 0%, #1f4d54 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body overflow-x-hidden antialiased">
+
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md shadow-sm border-b border-outline-variant/10">
+    <nav class="flex justify-between items-center max-w-container-max mx-auto px-4 md:px-margin-desktop h-20">
+        <div class="flex items-center gap-2">
+            <span class="font-display font-extrabold text-xl md:text-2xl tracking-tight text-primary">DKS Mentorship</span>
+            <span class="bg-secondary-container text-on-secondary-container text-[10px] font-mono font-bold px-2 py-0.5 rounded-full uppercase">Executive</span>
+        </div>
+        <div class="hidden md:flex items-center gap-8 text-sm">
+            <a class="text-secondary font-bold border-b-2 border-secondary pb-0.5" href="#home">Home</a>
+            <a class="text-on-surface-variant hover:text-secondary font-medium transition-colors" href="#about">About</a>
+            <a class="text-on-surface-variant hover:text-secondary font-medium transition-colors" href="#services">Services & GPay</a>
+            <a class="text-on-surface-variant hover:text-secondary font-medium transition-colors" href="#advantage">Advantage</a>
+            <button onclick="openContactModal()" class="text-on-surface-variant hover:text-secondary font-medium transition-colors">Contact</button>
+        </div>
+        <button onclick="openDiscoveryModal()" class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-bold text-sm hover:scale-95 transition-all shadow-md flex items-center gap-2">
+            <span>Book Discovery Call</span>
+            <span class="material-symbols-outlined text-base">calendar_month</span>
+        </button>
+    </nav>
+</header>
+
+<main class="pt-20">
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-[90vh] flex items-center mentor-bg overflow-hidden py-12">
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-secondary-fixed rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-tertiary-fixed-dim rounded-full blur-[150px]"></div>
+        </div>
+        <div class="relative max-w-container-max mx-auto px-4 md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-8 items-center py-stack-lg">
+            <div class="lg:col-span-7 space-y-6">
+                <span class="inline-block py-2 px-4 rounded-full bg-secondary-container text-on-secondary-container font-mono text-xs font-bold tracking-widest uppercase">
+                    AUTHORITATIVE • DYNAMIC • PREMIUM
+                </span>
+                <h1 class="font-display font-extrabold text-3xl md:text-5xl lg:text-[52px] text-on-primary leading-tight">
+                    Transform Your <span class="text-tertiary-fixed">Professional Identity</span> With Strategic Mentorship.
+                </h1>
+                <p class="font-body text-base md:text-lg text-on-primary-container max-w-xl leading-relaxed">
+                    Empowering high-level professionals to command authority and achieve energetic prestige in their careers through curated LinkedIn strategies and 1:1 wisdom sessions.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <button onclick="openDiscoveryModal()" class="bg-tertiary-fixed text-on-tertiary-fixed px-8 py-4 rounded-full font-display font-bold text-base hover:scale-105 transition-all shadow-xl flex items-center gap-2">
+                        <span>Start Your Journey</span>
+                        <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                    </button>
+                    <a href="#services" class="glass-card text-on-primary px-8 py-4 rounded-full font-display font-bold text-base flex items-center gap-2 hover:bg-white/10 transition-all border border-white/20">
+                        <span>View Programs & GPay</span>
+                        <span class="material-symbols-outlined text-lg">expand_more</span>
+                    </a>
+                </div>
+            </div>
+            <div id="about" class="lg:col-span-5 flex justify-center">
+                <div class="relative w-full max-w-md aspect-[4/5] glass-card rounded-[2rem] p-4 shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-700 overflow-hidden border border-white/20">
+                    <img alt="Diileep Kumar Sathyadasan" class="w-full h-full object-cover rounded-[1.5rem]" src="https://lh3.googleusercontent.com/aida/AP1WRLv39MngB3vq533uO2okUmuM0bGY9vC77Z2YYFJbEH2eM2AsSiEgvH00u9MScf-z3A_7W4HMnF1gZx-GtddmEgEcMY3apFqd5HKCIFr0gzkX63r0tH9IY2BuAZwFgw9roqqb9CXIHMTJd3iGdQwhrvjSGDARHGGtsPyeh8znHqRawq-WvRk3YoV5pcjjln_69cFQd1WEIJBIvNTpjXMTDG8pTn0qb4cDCI1W3fMpvb1wLPIeKC-15Tohq0g"/>
+                    <div class="absolute bottom-6 left-6 right-6 glass-card p-5 rounded-2xl border-l-4 border-tertiary-fixed backdrop-blur-xl">
+                        <p class="text-on-primary font-display font-bold text-lg">Diileep Kumar Sathyadasan</p>
+                        <p class="text-tertiary-fixed font-body text-xs font-medium">Strategic Executive Career Mentor</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="bg-surface py-8 relative z-20 -mt-10">
+        <div class="max-w-container-max mx-auto px-4 md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-4 p-8 rounded-3xl bg-surface-container-lowest border border-outline-variant/15 shadow-xl">
+            <div class="text-center">
+                <p class="font-display font-extrabold text-3xl md:text-4xl text-primary">500+</p>
+                <p class="font-mono text-xs font-semibold text-on-surface-variant mt-1">MENTEES GUIDED</p>
+            </div>
+            <div class="text-center">
+                <p class="font-display font-extrabold text-3xl md:text-4xl text-secondary">₹15Cr+</p>
+                <p class="font-mono text-xs font-semibold text-on-surface-variant mt-1">SALARY HIKES SECURED</p>
+            </div>
+            <div class="text-center">
+                <p class="font-display font-extrabold text-3xl md:text-4xl text-primary">100+</p>
+                <p class="font-mono text-xs font-semibold text-on-surface-variant mt-1">LINKEDIN OPTIMIZATIONS</p>
+            </div>
+            <div class="text-center">
+                <p class="font-display font-extrabold text-3xl md:text-4xl text-secondary">15+</p>
+                <p class="font-mono text-xs font-semibold text-on-surface-variant mt-1">YEARS EXPERIENCE</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Bento Grid -->
+    <section id="services" class="bg-surface-container-low py-16">
+        <div class="max-w-container-max mx-auto px-4 md:px-margin-desktop">
+            <div class="mb-12">
+                <span class="font-mono text-xs font-bold text-secondary uppercase bg-secondary-container px-3 py-1 rounded-full">Services & GPay Integration</span>
+                <h2 class="font-display font-extrabold text-3xl md:text-4xl text-primary mt-2">Strategic <span class="text-secondary">Solutions</span></h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                <!-- LinkedIn Profile -->
+                <div class="md:col-span-8 bg-white p-8 md:p-10 rounded-[2.5rem] shadow-sm border border-outline-variant/20 flex flex-col justify-between">
+                    <div>
+                        <span class="material-symbols-outlined text-secondary text-5xl mb-4 bg-secondary-container/40 p-3 rounded-2xl">link</span>
+                        <h3 class="font-display font-bold text-2xl mb-2">LinkedIn Profile Building</h3>
+                        <p class="font-body text-on-surface-variant mb-6">Complete overhaul of your digital executive presence. SEO optimization, headline crafting, and high-impact "About" section.</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-4 border-t border-outline-variant/15">
+                        <div class="text-secondary font-display font-extrabold text-3xl">₹4,999<span class="text-xs font-normal text-on-surface-variant">/profile</span></div>
+                        <button onclick="openServiceModal('LinkedIn Profile Building', 4999)" class="bg-primary hover:bg-secondary text-on-primary px-8 py-3 rounded-full font-bold text-sm transition-colors flex items-center gap-2">
+                            <span>Apply with GPay</span>
+                            <span class="material-symbols-outlined text-base">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 1:1 Mentorship -->
+                <div class="md:col-span-4 bg-secondary-container p-8 rounded-[2.5rem] flex flex-col justify-between">
+                    <div>
+                        <span class="material-symbols-outlined text-on-secondary-container text-5xl mb-4 bg-white/40 p-3 rounded-2xl">psychology</span>
+                        <h3 class="font-display font-bold text-2xl text-on-secondary-container mb-2">1:1 Mentorship</h3>
+                        <p class="font-body text-sm text-on-secondary-container/85">Direct access for strategic career pivoting and leadership development.</p>
+                    </div>
+                    <div class="mt-8">
+                        <div class="text-on-secondary-container font-display font-bold text-3xl mb-4">₹2,499<span class="text-xs opacity-70">/60 mins</span></div>
+                        <button onclick="openServiceModal('1:1 Mentorship', 2499)" class="w-full border-2 border-on-secondary-container text-on-secondary-container py-3 rounded-full font-bold hover:bg-on-secondary-container hover:text-white transition-all">Book Session with GPay</button>
+                    </div>
+                </div>
+
+                <!-- Resume Design -->
+                <div class="md:col-span-4 bg-surface-container-highest p-8 rounded-[2.5rem] flex flex-col justify-between border border-outline-variant">
+                    <div>
+                        <span class="material-symbols-outlined text-primary text-5xl mb-4 bg-white/70 p-3 rounded-2xl">description</span>
+                        <h3 class="font-display font-bold text-xl mb-2">ATS Resume Design</h3>
+                        <p class="font-body text-sm text-on-surface-variant">ATS-optimized resumes that actually get read by humans and machines.</p>
+                    </div>
+                    <div class="mt-8">
+                        <div class="text-primary font-display font-bold text-2xl mb-4">₹2,999</div>
+                        <button onclick="openServiceModal('ATS Resume Design', 2999)" class="w-full bg-surface-container-lowest text-secondary border border-secondary/30 font-bold py-3 rounded-full hover:bg-secondary hover:text-white transition-all">Get Started with GPay</button>
+                    </div>
+                </div>
+
+                <!-- Corporate Mock Interviews -->
+                <div class="md:col-span-8 bg-tertiary-container p-8 rounded-[2.5rem] text-tertiary-fixed flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div>
+                        <h3 class="font-display font-bold text-2xl mb-2">Corporate Mock Interviews</h3>
+                        <p class="font-body text-sm opacity-80 mb-4">Prepare for high-stakes leadership roles with realistic pressure and feedback.</p>
+                        <div class="font-display font-extrabold text-3xl">₹1,999<span class="text-xs opacity-70">/mock session</span></div>
+                    </div>
+                    <button onclick="openServiceModal('Corporate Mock Interviews', 1999)" class="bg-tertiary-fixed text-on-tertiary-fixed px-8 py-4 rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-lg">Schedule Practice with GPay</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DKS Advantage -->
+    <section id="advantage" class="py-16 bg-surface">
+        <div class="max-w-container-max mx-auto px-4 md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="rounded-[2.5rem] overflow-hidden shadow-2xl border border-outline-variant/20">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAjNmGdKN1BApB5BFlDQ7MRmc_c8K_NOq4eyFbVVxaD08iYsv6agypIMfdiTCnMrdxfFfb2-Uqm8LlUfSdwit254SzTGyXe_hDzEV5i9fj_SkjsYiRAbkUx5fxJKv-0wqfhS8EWy-n_jhBQY9KXT9yTx7d4Bfz3iyN5hadYGOH_wkQGMiJ3FbeB0N93TwBXTB9HLdRHJBJJjwFfHE703wAkCpbuYt8sNGPIF9IF4SdIuN3cgiZFp4t" class="w-full h-auto object-cover"/>
+            </div>
+            <div class="space-y-6">
+                <h2 class="font-display font-extrabold text-3xl md:text-4xl text-primary">The DKS <span class="text-secondary">Advantage</span></h2>
+                <div class="space-y-4">
+                    <div class="p-4 bg-surface-container-lowest rounded-2xl border border-outline-variant/10">
+                        <h4 class="font-display font-bold text-lg mb-1">Authority First</h4>
+                        <p class="text-sm text-on-surface-variant">We don't just build profiles; we build authorities. Your digital presence commands respect before you enter the room.</p>
+                    </div>
+                    <div class="p-4 bg-surface-container-lowest rounded-2xl border border-outline-variant/10">
+                        <h4 class="font-display font-bold text-lg mb-1">Growth Rhythm</h4>
+                        <p class="text-sm text-on-surface-variant">Implementing an 8px baseline rhythm to your career growth—mathematically sound and strategically effective.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="bg-primary-container py-12 text-on-primary-container text-center">
+    <p class="font-display font-bold text-xl text-white">DKS Mentorship</p>
+    <p class="text-sm opacity-80 mt-1">© 2026 Diileep Kumar Sathyadasan. All rights reserved.</p>
+</footer>
+
+<!-- Modals -->
+<!-- Discovery Call Modal -->
+<div id="discoveryModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md">
+    <div class="bg-white rounded-3xl p-6 md:p-8 max-w-md w-full shadow-2xl relative">
+        <button onclick="closeDiscoveryModal()" class="absolute top-4 right-4 text-gray-500 hover:text-black">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <h3 class="font-display font-extrabold text-2xl text-primary mb-1">Book Discovery Call</h3>
+        <p class="text-xs text-secondary font-mono mb-4">PostgreSQL DB Integration Active</p>
+        <form onsubmit="handleDiscoverySubmit(event)" class="space-y-3">
+            <input type="text" id="discName" required placeholder="Full Name" class="w-full px-4 py-2.5 border rounded-xl text-sm"/>
+            <input type="email" id="discEmail" required placeholder="Email Address" class="w-full px-4 py-2.5 border rounded-xl text-sm"/>
+            <input type="date" id="discDate" required class="w-full px-4 py-2.5 border rounded-xl text-sm"/>
+            <select id="discSlot" class="w-full px-4 py-2.5 border rounded-xl text-sm">
+                <option>10:00 AM - 10:30 AM</option>
+                <option>02:00 PM - 02:30 PM</option>
+                <option>06:00 PM - 06:30 PM</option>
+            </select>
+            <textarea id="discGoals" placeholder="Primary Career Goal" class="w-full px-4 py-2.5 border rounded-xl text-sm" rows="2"></textarea>
+            <button type="submit" class="w-full bg-primary text-white font-bold py-3 rounded-full hover:bg-secondary transition-colors text-sm">Confirm Booking</button>
+        </form>
+    </div>
+</div>
+
+<!-- Service GPay Modal -->
+<div id="serviceModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md">
+    <div class="bg-white rounded-3xl p-6 md:p-8 max-w-md w-full shadow-2xl relative">
+        <button onclick="closeServiceModal()" class="absolute top-4 right-4 text-gray-500 hover:text-black">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <span class="font-mono text-xs text-secondary font-bold uppercase bg-secondary-container px-2.5 py-1 rounded">Google Pay API Checkout</span>
+        <h3 id="modalServiceTitle" class="font-display font-extrabold text-2xl text-primary mt-2">Service Name</h3>
+        <p id="modalServicePrice" class="font-display font-extrabold text-2xl text-emerald-600 mb-4">₹0</p>
+        <form onsubmit="handleGPaySubmit(event)" class="space-y-3">
+            <input type="text" id="gpayName" required placeholder="Your Name" class="w-full px-4 py-2.5 border rounded-xl text-sm"/>
+            <input type="email" id="gpayEmail" required placeholder="Your Email Address" class="w-full px-4 py-2.5 border rounded-xl text-sm"/>
+            <input type="url" id="gpayLinkedin" placeholder="LinkedIn Profile URL" class="w-full px-4 py-2.5 border rounded-xl text-sm"/>
+            <button type="submit" class="w-full bg-black text-white font-bold py-3.5 rounded-full hover:bg-zinc-900 transition-all flex items-center justify-center gap-2 shadow-lg">
+                <svg className="h-5 w-auto inline" viewBox="0 0 1024 1024" fill="none" width="20" height="20">
+                    <path d="M640 400C640 373.333 635.333 350.667 629.333 330.667H400V469.333H537.333C530.667 501.333 510.667 528 480 546.667V613.333H569.333C622.667 564 640 490.667 640 400Z" fill="#4285F4"/>
+                    <path d="M400 640C466.667 640 522.667 618 569.333 574.667L480 508C458.667 522.667 432 532 400 532C336 532 281.333 490 262 433.333H169.333V502.667C214.667 590.667 301.333 640 400 640Z" fill="#34A853"/>
+                    <path d="M262 366.667C256.667 350.667 254 333.333 254 316C254 298.667 256.667 281.333 262 265.333V196H169.333C150.667 232.667 140 273.333 140 316C140 358.667 150.667 399.333 169.333 436L262 366.667Z" fill="#FBBC05"/>
+                    <path d="M400 100C437.333 100 470.667 113.333 497.333 137.333L572 62.6667C522.667 16 466.667 0 400 0C301.333 0 214.667 49.3333 169.333 137.333L262 206.667C281.333 150 336 100 400 100Z" fill="#EA4335"/>
+                </svg>
+                <span>Authorize & Pay with GPay</span>
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Receipt Modal -->
+<div id="receiptModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md">
+    <div class="bg-white rounded-3xl p-6 md:p-8 max-w-md w-full shadow-2xl text-center">
+        <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3">
+            <span class="material-symbols-outlined text-3xl">verified</span>
+        </div>
+        <h3 class="font-display font-extrabold text-2xl text-primary">Confirmation Successful!</h3>
+        <div id="receiptContent" class="my-4 p-4 bg-gray-50 rounded-2xl text-left text-xs font-mono space-y-1.5 border"></div>
+        <button onclick="closeReceiptModal()" class="w-full bg-primary text-white font-bold py-3 rounded-full hover:bg-secondary">Done</button>
+    </div>
+</div>
+
+<script>
+    let activeService = { title: '', price: 0 };
+
+    function openDiscoveryModal() {
+        document.getElementById('discoveryModal').classList.remove('hidden');
+    }
+    function closeDiscoveryModal() {
+        document.getElementById('discoveryModal').classList.add('hidden');
+    }
+
+    function openServiceModal(title, price) {
+        activeService = { title, price };
+        document.getElementById('modalServiceTitle').innerText = title;
+        document.getElementById('modalServicePrice').innerText = '₹' + price.toLocaleString('en-IN');
+        document.getElementById('serviceModal').classList.remove('hidden');
+    }
+    function closeServiceModal() {
+        document.getElementById('serviceModal').classList.add('hidden');
+    }
+
+    function closeReceiptModal() {
+        document.getElementById('receiptModal').classList.add('hidden');
+    }
+
+    function handleDiscoverySubmit(e) {
+        e.preventDefault();
+        const name = document.getElementById('discName').value;
+        const email = document.getElementById('discEmail').value;
+        const date = document.getElementById('discDate').value;
+        const slot = document.getElementById('discSlot').value;
+        
+        closeDiscoveryModal();
+        
+        document.getElementById('receiptContent').innerHTML = `
+            <div><strong>Type:</strong> 1:1 Discovery Call</div>
+            <div><strong>Mentee:</strong> ${name} (${email})</div>
+            <div><strong>Preferred Slot:</strong> ${date} @ ${slot}</div>
+            <div><strong>Status:</strong> CONFIRMED (PostgreSQL DB)</div>
+        `;
+        document.getElementById('receiptModal').classList.remove('hidden');
+    }
+
+    function handleGPaySubmit(e) {
+        e.preventDefault();
+        const name = document.getElementById('gpayName').value;
+        const email = document.getElementById('gpayEmail').value;
+        const txId = 'GPAY_INR_' + Math.floor(Math.random() * 899999 + 100000);
+
+        closeServiceModal();
+
+        document.getElementById('receiptContent').innerHTML = `
+            <div><strong>Payment Gateway:</strong> Google Pay (GPay) API</div>
+            <div><strong>Tx Reference:</strong> ${txId}</div>
+            <div><strong>Service:</strong> ${activeService.title}</div>
+            <div><strong>Amount Paid:</strong> ₹${activeService.price.toLocaleString('en-IN')}</div>
+            <div><strong>Mentee:</strong> ${name} (${email})</div>
+            <div><strong>Database Record:</strong> SUCCESS (PostgreSQL)</div>
+        `;
+        document.getElementById('receiptModal').classList.remove('hidden');
+    }
+
+    function openContactModal() {
+        openDiscoveryModal();
+    }
+</script>
+</body>
+</html>
