@@ -49,7 +49,7 @@ export default function AdminLoginPage() {
           <span className="font-mono text-xs font-bold text-tertiary-fixed uppercase tracking-widest bg-white/10 px-3.5 py-1 rounded-full inline-block mb-3">
             Executive Portal
           </span>
-          <h1 className="font-display font-extrabold text-3xl text-white">DKS Admin Login</h1>
+          <h1 className="font-display font-extrabold text-3xl text-white">DS Admin Login</h1>
           <p className="font-body text-xs text-on-primary-container mt-2">
             Secure authentication for Diileep Kumar Sathyadasan
           </p>
@@ -99,14 +99,11 @@ export default function AdminLoginPage() {
           </button>
         </form>
 
-        <div className="mt-8 pt-6 border-t border-white/10 text-center text-xs text-on-primary-container/70 space-y-2">
-          <p className="font-mono">Default Password: <code className="bg-white/10 px-2 py-0.5 rounded text-tertiary-fixed">DKSAdmin2026!</code></p>
-          <div className="pt-2">
-            <Link href="/" className="text-white hover:underline flex items-center justify-center gap-1">
-              <span className="material-symbols-outlined text-xs">arrow_back</span>
-              <span>Back to Main Website</span>
-            </Link>
-          </div>
+        <div className="mt-8 pt-6 border-t border-white/10 text-center text-xs text-on-primary-container/70">
+          <Link href="/" className="text-white hover:underline flex items-center justify-center gap-1">
+            <span className="material-symbols-outlined text-xs">arrow_back</span>
+            <span>Back to Main Website</span>
+          </Link>
         </div>
       </div>
     </div>
