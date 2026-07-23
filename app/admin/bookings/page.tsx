@@ -22,7 +22,7 @@ export default function AdminSubmissionsPage() {
       }
     } catch (err: any) {
       setError(err.message || 'Could not load submissions.');
-    } fontally {
+    } finally {
       setLoading(false);
     }
   };
@@ -51,6 +51,13 @@ export default function AdminSubmissionsPage() {
           </div>
 
           <div className="flex items-center gap-3">
+            <Link
+              href="/admin/cms"
+              className="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-full font-bold text-xs font-mono hover:opacity-90 transition-all flex items-center gap-1"
+            >
+              <span className="material-symbols-outlined text-sm">edit_note</span>
+              <span>CMS Editor</span>
+            </Link>
             <button
               onClick={fetchSubmissions}
               className="bg-surface-container-high hover:bg-surface-variant text-on-surface px-4 py-2 rounded-full font-bold text-xs font-mono transition-all flex items-center gap-1.5"
