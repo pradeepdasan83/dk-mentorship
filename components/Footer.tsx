@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 
 interface FooterProps {
   onOpenContactModal: () => void;
@@ -39,18 +38,6 @@ export default function Footer({ onOpenContactModal }: FooterProps) {
           >
             Contact Mentor
           </button>
-          <Link
-            href="/admin/cms"
-            className="hover:text-white hover:underline decoration-secondary transition-all font-mono text-xs text-tertiary-fixed font-bold"
-          >
-            CMS Editor
-          </Link>
-          <Link
-            href="/admin/bookings"
-            className="hover:text-white hover:underline decoration-secondary transition-all font-mono text-xs text-on-primary-container/70"
-          >
-            DB Dashboard
-          </Link>
         </div>
       </div>
     </footer>
