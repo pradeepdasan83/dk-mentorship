@@ -16,7 +16,7 @@ export default function Header({ onOpenDiscoveryModal, onOpenContactModal }: Hea
       <nav className="flex justify-between items-center max-w-container-max mx-auto px-4 md:px-margin-desktop h-20">
         <Link href="/" className="group flex items-center gap-2">
           <span className="font-display font-extrabold text-xl md:text-2xl tracking-tight text-primary dark:text-primary-fixed group-hover:text-secondary transition-colors">
-            DKS Mentorship
+            DS Mentorship
           </span>
           <span className="bg-secondary-container text-on-secondary-container text-[10px] font-mono font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
             Executive

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 export default function ApproachSection() {
   const [data, setData] = useState({
-    approachTitle: 'The DKS Advantage',
+    approachTitle: 'The DS Advantage',
     approachSub: 'A bespoke mentoring system developed over 15+ years of guiding senior professionals to unprecedented career breakthroughs.',
     approachImgUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAAjNmGdKN1BApB5BFlDQ7MRmc_c8K_NOq4eyFbVVxaD08iYsv6agypIMfdiTCnMrdxfFfb2-Uqm8LlUfSdwit254SzTGyXe_hDzEV5i9fj_SkjsYiRAbkUx5fxJKv-0wqfhS8EWy-n_jhBQY9KXT9yTx7d4Bfz3iyN5hadYGOH_wkQGMiJ3FbeB0N93TwBXTB9HLdRHJBJJjwFfHE703wAkCpbuYt8sNGPIF9IF4SdIuN3cgiZFp4t',
     adv1Title: 'Authority First',

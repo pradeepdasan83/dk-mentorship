@@ -13,13 +13,13 @@ export default function Footer({ onOpenContactModal }: FooterProps) {
       <div className="max-w-container-max mx-auto px-4 md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="flex flex-col items-center md:items-start gap-2 text-center md:text-left">
           <span className="font-display font-black text-2xl text-white tracking-tight">
-            DKS Mentorship
+            DS Mentorship
           </span>
           <p className="font-body text-sm text-on-primary-container/80">
             © {new Date().getFullYear()} Diileep Kumar Sathyadasan. All rights reserved.
           </p>
           <p className="font-mono text-xs text-on-primary-container/60 mt-1">
-            Built with Next.js, PostgreSQL & Google Pay Integration
+            Built with Next.js, Supabase PostgreSQL & Google Pay Integration
           </p>
         </div>
 
@@ -40,8 +40,14 @@ export default function Footer({ onOpenContactModal }: FooterProps) {
             Contact Mentor
           </button>
           <Link
+            href="/admin/cms"
+            className="hover:text-white hover:underline decoration-secondary transition-all font-mono text-xs text-tertiary-fixed font-bold"
+          >
+            CMS Editor
+          </Link>
+          <Link
             href="/admin/bookings"
-            className="hover:text-white hover:underline decoration-secondary transition-all font-mono text-xs text-tertiary-fixed"
+            className="hover:text-white hover:underline decoration-secondary transition-all font-mono text-xs text-on-primary-container/70"
           >
             DB Dashboard
           </Link>
