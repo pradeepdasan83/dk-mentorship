@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
 export default function AdminSubmissionsPage() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
