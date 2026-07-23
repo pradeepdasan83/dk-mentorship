@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface CTASectionProps {
   onOpenDiscoveryModal: () => void;
@@ -8,6 +8,22 @@ interface CTASectionProps {
 }
 
 export default function CTASection({ onOpenDiscoveryModal, onScrollToServices }: CTASectionProps) {
+  const [data, setData] = useState({
+    ctaTitle: 'Ready to Elevate Your Career Trajectory?',
+    ctaSub: 'Join 500+ high-achieving professionals who have redefined their authority. Stop waiting for opportunities—start creating them today.',
+  });
+
+  useEffect(() => {
+    fetch('/api/content')
+      .then((res) => res.json())
+      .then((resData) => {
+        if (resData.success && resData.content) {
+          setData((prev) => ({ ...prev, ...resData.content }));
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <section className="py-16 md:py-stack-lg mentor-bg text-center text-on-primary relative overflow-hidden">
       <div className="max-w-container-max mx-auto px-4 md:px-margin-desktop">
@@ -16,10 +32,10 @@ export default function CTASection({ onOpenDiscoveryModal, onScrollToServices }:
             Take The Next Step
           </span>
           <h2 className="font-display font-extrabold text-3xl md:text-5xl text-on-primary mb-4 max-w-3xl mx-auto leading-tight">
-            Ready to Elevate Your Career Trajectory?
+            {data.ctaTitle}
           </h2>
           <p className="font-body text-base md:text-lg text-on-primary-container max-w-2xl mx-auto mb-8 opacity-90 leading-relaxed">
-            Join 500+ high-achieving professionals who have redefined their authority. Stop waiting for opportunities—start creating them today.
+            {data.ctaSub}
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">

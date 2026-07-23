@@ -38,6 +38,8 @@ model SiteContent {
   mentorName       String   @default("Diileep Kumar Sathyadasan")
   mentorRole       String   @default("Strategic Executive Career Mentor")
   mentorImageUrl   String   @default("https://lh3.googleusercontent.com/aida/AP1WRLv39MngB3vq533uO2okUmuM0bGY9vC77Z2YYFJbEH2eM2AsSiEgvH00u9MScf-z3A_7W4HMnF1gZx-GtddmEgEcMY3apFqd5HKCIFr0gzkX63r0tH9IY2BuAZwFgw9roqqb9CXIHMTJd3iGdQwhrvjSGDARHGGtsPyeh8znHqRawq-WvRk3YoV5pcjjln_69cFQd1WEIJBIvNTpjXMTDG8pTn0qb4cDCI1W3fMpvb1wLPIeKC-15Tohq0g")
+  
+  // Stats Section
   stat1Value       String   @default("500+")
   stat1Label       String   @default("MENTEES GUIDED")
   stat2Value       String   @default("₹15Cr+")
@@ -46,6 +48,45 @@ model SiteContent {
   stat3Label       String   @default("LINKEDIN OPTIMIZATIONS")
   stat4Value       String   @default("15+")
   stat4Label       String   @default("YEARS EXPERIENCE")
+
+  // Services Pricing Section
+  service1Title    String   @default("LinkedIn Profile Building")
+  service1Price    Float    @default(4999)
+  service1Unit     String   @default("/profile")
+  service1Desc     String   @default("Complete overhaul of your digital executive presence. SEO optimization, headline crafting, and high-impact About section that converts recruiters.")
+  service1Badge    String   @default("POPULAR CHOICE")
+
+  service2Title    String   @default("1:1 Executive Mentorship")
+  service2Price    Float    @default(2499)
+  service2Unit     String   @default("/60 mins")
+  service2Desc     String   @default("Direct 1-on-1 strategic access for executive career pivoting, salary negotiation strategies, and leadership transition.")
+  service2Badge    String   @default("HIGH IMPACT")
+
+  service3Title    String   @default("ATS Resume Design")
+  service3Price    Float    @default(2999)
+  service3Unit     String   @default("/resume")
+  service3Desc     String   @default("ATS-optimized executive resumes engineered to pass mechanical filters and compel hiring directors.")
+
+  service4Title    String   @default("Corporate Mock Interviews")
+  service4Price    Float    @default(1999)
+  service4Unit     String   @default("/mock session")
+  service4Desc     String   @default("Prepare for high-stakes C-suite and Senior Leadership roles with realistic pressure, roleplay, and actionable feedback.")
+
+  // Approach / DKS Advantage Section
+  approachTitle    String   @default("The DKS Advantage")
+  approachSub      String   @default("A bespoke mentoring system developed over 15+ years of guiding senior professionals to unprecedented career breakthroughs.")
+  approachImgUrl   String   @default("https://lh3.googleusercontent.com/aida-public/AB6AXuAAjNmGdKN1BApB5BFlDQ7MRmc_c8K_NOq4eyFbVVxaD08iYsv6agypIMfdiTCnMrdxfFfb2-Uqm8LlUfSdwit254SzTGyXe_hDzEV5i9fj_SkjsYiRAbkUx5fxJKv-0wqfhS8EWy-n_jhBQY9KXT9yTx7d4Bfz3iyN5hadYGOH_wkQGMiJ3FbeB0N93TwBXTB9HLdRHJBJJjwFfHE703wAkCpbuYt8sNGPIF9IF4SdIuN3cgiZFp4t")
+  adv1Title        String   @default("Authority First")
+  adv1Desc         String   @default("We don't just build profiles; we build executive authorities. Your digital presence will command respect before you even enter the room.")
+  adv2Title        String   @default("Growth Rhythm")
+  adv2Desc         String   @default("Implementing an 8px baseline rhythm to your career growth—mathematically harmonious and strategically sound for maximum ROI.")
+  adv3Title        String   @default("Tonal Layering")
+  adv3Desc         String   @default("Layering soft skills with technical prowess to create a sophisticated, multifaceted professional personality.")
+
+  // CTA Section
+  ctaTitle         String   @default("Ready to Elevate Your Career Trajectory?")
+  ctaSub           String   @default("Join 500+ high-achieving professionals who have redefined their authority. Stop waiting for opportunities—start creating them today.")
+
   updatedAt        DateTime @updatedAt
 }
 

@@ -56,9 +56,37 @@ export interface SiteContentInput {
   stat3Label?: string;
   stat4Value?: string;
   stat4Label?: string;
+  service1Title?: string;
+  service1Price?: number;
+  service1Unit?: string;
+  service1Desc?: string;
+  service1Badge?: string;
+  service2Title?: string;
+  service2Price?: number;
+  service2Unit?: string;
+  service2Desc?: string;
+  service2Badge?: string;
+  service3Title?: string;
+  service3Price?: number;
+  service3Unit?: string;
+  service3Desc?: string;
+  service4Title?: string;
+  service4Price?: number;
+  service4Unit?: string;
+  service4Desc?: string;
+  approachTitle?: string;
+  approachSub?: string;
+  approachImgUrl?: string;
+  adv1Title?: string;
+  adv1Desc?: string;
+  adv2Title?: string;
+  adv2Desc?: string;
+  adv3Title?: string;
+  adv3Desc?: string;
+  ctaTitle?: string;
+  ctaSub?: string;
 }
 
-// In-memory fallback store for robust operational guarantee
 const fallbackStore = {
   content: {
     heroTag: "AUTHORITATIVE • DYNAMIC • PREMIUM",
@@ -75,6 +103,41 @@ const fallbackStore = {
     stat3Label: "LINKEDIN OPTIMIZATIONS",
     stat4Value: "15+",
     stat4Label: "YEARS EXPERIENCE",
+
+    service1Title: "LinkedIn Profile Building",
+    service1Price: 4999,
+    service1Unit: "/profile",
+    service1Desc: "Complete overhaul of your digital executive presence. SEO optimization, headline crafting, and high-impact About section that converts recruiters.",
+    service1Badge: "POPULAR CHOICE",
+
+    service2Title: "1:1 Executive Mentorship",
+    service2Price: 2499,
+    service2Unit: "/60 mins",
+    service2Desc: "Direct 1-on-1 strategic access for executive career pivoting, salary negotiation strategies, and leadership transition.",
+    service2Badge: "HIGH IMPACT",
+
+    service3Title: "ATS Resume Design",
+    service3Price: 2999,
+    service3Unit: "/resume",
+    service3Desc: "ATS-optimized executive resumes engineered to pass mechanical filters and compel hiring directors.",
+
+    service4Title: "Corporate Mock Interviews",
+    service4Price: 1999,
+    service4Unit: "/mock session",
+    service4Desc: "Prepare for high-stakes C-suite and Senior Leadership roles with realistic pressure, roleplay, and actionable feedback.",
+
+    approachTitle: "The DKS Advantage",
+    approachSub: "A bespoke mentoring system developed over 15+ years of guiding senior professionals to unprecedented career breakthroughs.",
+    approachImgUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuAAjNmGdKN1BApB5BFlDQ7MRmc_c8K_NOq4eyFbVVxaD08iYsv6agypIMfdiTCnMrdxfFfb2-Uqm8LlUfSdwit254SzTGyXe_hDzEV5i9fj_SkjsYiRAbkUx5fxJKv-0wqfhS8EWy-n_jhBQY9KXT9yTx7d4Bfz3iyN5hadYGOH_wkQGMiJ3FbeB0N93TwBXTB9HLdRHJBJJjwFfHE703wAkCpbuYt8sNGPIF9IF4SdIuN3cgiZFp4t",
+    adv1Title: "Authority First",
+    adv1Desc: "We don't just build profiles; we build executive authorities. Your digital presence will command respect before you even enter the room.",
+    adv2Title: "Growth Rhythm",
+    adv2Desc: "Implementing an 8px baseline rhythm to your career growth—mathematically harmonious and strategically sound for maximum ROI.",
+    adv3Title: "Tonal Layering",
+    adv3Desc: "Layering soft skills with technical prowess to create a sophisticated, multifaceted professional personality.",
+
+    ctaTitle: "Ready to Elevate Your Career Trajectory?",
+    ctaSub: "Join 500+ high-achieving professionals who have redefined their authority. Stop waiting for opportunities—start creating them today.",
   },
   mentees: [] as any[],
   bookings: [] as any[],
@@ -98,7 +161,7 @@ export async function getSiteContent() {
       });
     }
 
-    return { content, source: 'postgresql' };
+    return { content: { ...fallbackStore.content, ...content }, source: 'postgresql' };
   } catch (error) {
     console.warn('PostgreSQL content fallback to memory:', error);
     return { content: fallbackStore.content, source: 'memory' };
@@ -119,7 +182,7 @@ export async function updateSiteContent(data: SiteContentInput) {
       create: { id: 'main_site_content', ...data },
     });
 
-    return { success: true, content, source: 'postgresql' };
+    return { success: true, content: { ...fallbackStore.content, ...content }, source: 'postgresql' };
   } catch (error) {
     console.warn('PostgreSQL content update fallback:', error);
     fallbackStore.content = { ...fallbackStore.content, ...data };

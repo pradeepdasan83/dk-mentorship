@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 export interface ServiceItem {
   id: string;
@@ -17,39 +17,74 @@ interface ServicesBentoProps {
 }
 
 export default function ServicesBento({ onSelectService }: ServicesBentoProps) {
+  const [cmsData, setCmsData] = useState({
+    service1Title: 'LinkedIn Profile Building',
+    service1Price: 4999,
+    service1Unit: '/profile',
+    service1Desc: 'Complete overhaul of your digital executive presence. SEO optimization, headline crafting, and high-impact About section that converts recruiters.',
+    service1Badge: 'POPULAR CHOICE',
+
+    service2Title: '1:1 Executive Mentorship',
+    service2Price: 2499,
+    service2Unit: '/60 mins',
+    service2Desc: 'Direct 1-on-1 strategic access for executive career pivoting, salary negotiation strategies, and leadership transition.',
+    service2Badge: 'HIGH IMPACT',
+
+    service3Title: 'ATS Resume Design',
+    service3Price: 2999,
+    service3Unit: '/resume',
+    service3Desc: 'ATS-optimized executive resumes engineered to pass mechanical filters and compel hiring directors.',
+
+    service4Title: 'Corporate Mock Interviews',
+    service4Price: 1999,
+    service4Unit: '/mock session',
+    service4Desc: 'Prepare for high-stakes C-suite and Senior Leadership roles with realistic pressure, roleplay, and actionable feedback.',
+  });
+
+  useEffect(() => {
+    fetch('/api/content')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && data.content) {
+          setCmsData((prev) => ({ ...prev, ...data.content }));
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   const services: ServiceItem[] = [
     {
       id: 'linkedin-profile',
-      title: 'LinkedIn Profile Building',
-      price: 4999,
-      unit: '/profile',
-      description: 'Complete overhaul of your digital executive presence. SEO optimization, headline crafting, and high-impact "About" section that converts recruiters and executives.',
+      title: cmsData.service1Title,
+      price: Number(cmsData.service1Price),
+      unit: cmsData.service1Unit,
+      description: cmsData.service1Desc,
       icon: 'link',
-      badge: 'POPULAR CHOICE',
+      badge: cmsData.service1Badge,
     },
     {
       id: 'mentorship-1on1',
-      title: '1:1 Executive Mentorship',
-      price: 2499,
-      unit: '/60 mins',
-      description: 'Direct 1-on-1 strategic access for executive career pivoting, salary negotiation strategies, and leadership transition.',
+      title: cmsData.service2Title,
+      price: Number(cmsData.service2Price),
+      unit: cmsData.service2Unit,
+      description: cmsData.service2Desc,
       icon: 'psychology',
-      badge: 'HIGH IMPACT',
+      badge: cmsData.service2Badge,
     },
     {
       id: 'resume-design',
-      title: 'ATS Resume Design',
-      price: 2999,
-      unit: '/resume',
-      description: 'ATS-optimized executive resumes engineered to pass mechanical filters and compel hiring directors.',
+      title: cmsData.service3Title,
+      price: Number(cmsData.service3Price),
+      unit: cmsData.service3Unit,
+      description: cmsData.service3Desc,
       icon: 'description',
     },
     {
       id: 'mock-interviews',
-      title: 'Corporate Mock Interviews',
-      price: 1999,
-      unit: '/mock session',
-      description: 'Prepare for high-stakes C-suite and Senior Leadership roles with realistic pressure, roleplay, and actionable feedback.',
+      title: cmsData.service4Title,
+      price: Number(cmsData.service4Price),
+      unit: cmsData.service4Unit,
+      description: cmsData.service4Desc,
       icon: 'groups',
     },
   ];
@@ -118,9 +153,11 @@ export default function ServicesBento({ onSelectService }: ServicesBentoProps) {
                 <span className="material-symbols-outlined text-on-secondary-container text-5xl bg-white/40 p-4 rounded-2xl">
                   {services[1].icon}
                 </span>
-                <span className="font-mono text-[11px] font-bold bg-on-secondary-container text-white px-3 py-1 rounded-full uppercase">
-                  {services[1].badge}
-                </span>
+                {services[1].badge && (
+                  <span className="font-mono text-[11px] font-bold bg-on-secondary-container text-white px-3 py-1 rounded-full uppercase">
+                    {services[1].badge}
+                  </span>
+                )}
               </div>
               <h3 className="font-display font-bold text-2xl text-on-secondary-container mb-3">
                 {services[1].title}
