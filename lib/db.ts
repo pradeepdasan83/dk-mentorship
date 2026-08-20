@@ -94,7 +94,7 @@ const fallbackStore = {
     heroSubtext: "Empowering high-level professionals to command authority and achieve energetic prestige in their careers through curated LinkedIn strategies and 1:1 wisdom sessions.",
     mentorName: "Diileep Kumar Sathyadasan",
     mentorRole: "Strategic Executive Career Mentor",
-    mentorImageUrl: "https://lh3.googleusercontent.com/aida/AP1WRLv39MngB3vq533uO2okUmuM0bGY9vC77Z2YYFJbEH2eM2AsSiEgvH00u9MScf-z3A_7W4HMnF1gZx-GtddmEgEcMY3apFqd5HKCIFr0gzkX63r0tH9IY2BuAZwFgw9roqqb9CXIHMTJd3iGdQwhrvjSGDARHGGtsPyeh8znHqRawq-WvRk3YoV5pcjjln_69cFQd1WEIJBIvNTpjXMTDG8pTn0qb4cDCI1W3fMpvb1wLPIeKC-15Tohq0g",
+    mentorImageUrl: "/dileep-kumar.jpg",
     stat1Value: "500+",
     stat1Label: "MENTEES GUIDED",
     stat2Value: "₹15Cr+",
@@ -126,7 +126,7 @@ const fallbackStore = {
     service4Unit: "/mock session",
     service4Desc: "Prepare for high-stakes C-suite and Senior Leadership roles with realistic pressure, roleplay, and actionable feedback.",
 
-    approachTitle: "The DKS Advantage",
+    approachTitle: "The DS Advantage",
     approachSub: "A bespoke mentoring system developed over 15+ years of guiding senior professionals to unprecedented career breakthroughs.",
     approachImgUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuAAjNmGdKN1BApB5BFlDQ7MRmc_c8K_NOq4eyFbVVxaD08iYsv6agypIMfdiTCnMrdxfFfb2-Uqm8LlUfSdwit254SzTGyXe_hDzEV5i9fj_SkjsYiRAbkUx5fxJKv-0wqfhS8EWy-n_jhBQY9KXT9yTx7d4Bfz3iyN5hadYGOH_wkQGMiJ3FbeB0N93TwBXTB9HLdRHJBJJjwFfHE703wAkCpbuYt8sNGPIF9IF4SdIuN3cgiZFp4t",
     adv1Title: "Authority First",

@@ -14,14 +14,14 @@ export default function Hero({ onOpenDiscoveryModal, onScrollToServices }: HeroP
     heroSubtext: 'Empowering high-level professionals to command authority and achieve energetic prestige in their careers through curated LinkedIn strategies, executive positioning, and 1:1 wisdom sessions.',
     mentorName: 'Diileep Kumar Sathyadasan',
     mentorRole: 'Strategic Executive Career Mentor',
-    mentorImageUrl: 'https://lh3.googleusercontent.com/aida/AP1WRLv39MngB3vq533uO2okUmuM0bGY9vC77Z2YYFJbEH2eM2AsSiEgvH00u9MScf-z3A_7W4HMnF1gZx-GtddmEgEcMY3apFqd5HKCIFr0gzkX63r0tH9IY2BuAZwFgw9roqqb9CXIHMTJd3iGdQwhrvjSGDARHGGtsPyeh8znHqRawq-WvRk3YoV5pcjjln_69cFQd1WEIJBIvNTpjXMTDG8pTn0qb4cDCI1W3fMpvb1wLPIeKC-15Tohq0g',
+    mentorImageUrl: '/dileep-kumar.jpg',
   });
 
   useEffect(() => {
     fetch('/api/content')
       .then((res) => res.json())
       .then((data) => {
-        if (data.success && data.content) {
+        if (data.success && data.content && data.content.mentorImageUrl) {
           setContent((prev) => ({ ...prev, ...data.content }));
         }
       })
@@ -87,7 +87,7 @@ export default function Hero({ onOpenDiscoveryModal, onScrollToServices }: HeroP
           <div className="relative w-full max-w-md aspect-[4/5] glass-card rounded-[2rem] p-3 md:p-4 shadow-2xl rotate-2 hover:rotate-0 transition-all duration-700 overflow-hidden group border border-white/20">
             <div className="relative w-full h-full rounded-[1.5rem] overflow-hidden">
               <img
-                src={content.mentorImageUrl}
+                src={content.mentorImageUrl || '/dileep-kumar.jpg'}
                 alt={content.mentorName}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
