@@ -37,50 +37,22 @@ export default function ServiceBookingModal({
     setIsFormValid(Boolean(updated.name.trim() && updated.email.trim() && updated.email.includes('@')));
   };
 
-  const handleGPayPaymentSuccess = async (paymentDetails: {
+  const handlePaymentSuccess = (paymentDetails: {
     transactionId: string;
     paymentToken: string;
     amount: number;
+    serviceTitle: string;
+    menteeName: string;
+    menteeEmail: string;
   }) => {
-    try {
-      setErrorMessage('');
-
-      const response = await fetch('/api/services', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          currentRole: formData.currentRole,
-          linkedinUrl: formData.linkedinUrl,
-          serviceTitle: service.title,
-          priceAmount: service.price,
-          notes: formData.notes,
-          paymentToken: paymentDetails.paymentToken,
-          transactionId: paymentDetails.transactionId,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok || !data.success) {
-        throw new Error(data.error || 'Failed to record service application.');
-      }
-
-      onSuccess({
-        application: data.application,
-        transactionId: data.transactionId,
-        serviceTitle: service.title,
-        amount: service.price,
-        menteeName: formData.name,
-        menteeEmail: formData.email,
-      });
-
-      onClose();
-    } catch (err: any) {
-      setErrorMessage(err.message || 'Error processing service registration.');
-    }
+    onSuccess({
+      transactionId: paymentDetails.transactionId,
+      serviceTitle: paymentDetails.serviceTitle,
+      amount: paymentDetails.amount,
+      menteeName: paymentDetails.menteeName,
+      menteeEmail: paymentDetails.menteeEmail,
+    });
+    onClose();
   };
 
   return (
@@ -90,7 +62,7 @@ export default function ServiceBookingModal({
         <div className="flex items-center justify-between border-b border-outline-variant/15 pb-4 mb-6">
           <div>
             <span className="font-mono text-[11px] font-bold text-secondary uppercase tracking-widest bg-secondary-container/60 px-2.5 py-1 rounded">
-              Secure Checkout • Google Pay
+              Razorpay • Google Pay Checkout
             </span>
             <h3 className="font-display font-extrabold text-2xl text-primary mt-1">
               {service.title}
@@ -211,7 +183,11 @@ export default function ServiceBookingModal({
               serviceTitle={service.title}
               userEmail={formData.email}
               userName={formData.name}
-              onPaymentSuccess={handleGPayPaymentSuccess}
+              userPhone={formData.phone}
+              userRole={formData.currentRole}
+              userLinkedin={formData.linkedinUrl}
+              notes={formData.notes}
+              onPaymentSuccess={handlePaymentSuccess}
               onPaymentError={(err) => setErrorMessage(err)}
             />
           )}
