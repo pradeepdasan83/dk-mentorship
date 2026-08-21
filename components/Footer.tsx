@@ -17,9 +17,6 @@ export default function Footer({ onOpenContactModal }: FooterProps) {
           <p className="font-body text-sm text-on-primary-container/80">
             © {new Date().getFullYear()} Diileep Kumar Sathyadasan. All rights reserved.
           </p>
-          <p className="font-mono text-xs text-on-primary-container/60 mt-1">
-            Built with Next.js, Supabase PostgreSQL & Google Pay Integration
-          </p>
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium">
