@@ -49,7 +49,7 @@ export default function AdminLoginPage() {
           <span className="font-mono text-xs font-bold text-tertiary-fixed uppercase tracking-widest bg-white/10 px-3.5 py-1 rounded-full inline-block mb-3">
             Executive Portal
           </span>
-          <h1 className="font-display font-extrabold text-3xl text-white">DS Admin Login</h1>
+          <h1 className="font-display font-extrabold text-3xl text-white">DK Admin Login</h1>
           <p className="font-body text-xs text-on-primary-container mt-2">
             Secure authentication for Diileep Kumar Sathyadasan
           </p>

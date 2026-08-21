@@ -81,9 +81,9 @@ export default function GPayButton({
           key: orderData.keyId,
           amount: orderData.amount,
           currency: orderData.currency,
-          name: 'DS Mentorship',
+          name: 'DK Mentorship',
           description: `Payment for ${serviceTitle}`,
-          image: 'https://lh3.googleusercontent.com/aida/AP1WRLv39MngB3vq533uO2okUmuM0bGY9vC77Z2YYFJbEH2eM2AsSiEgvH00u9MScf-z3A_7W4HMnF1gZx-GtddmEgEcMY3apFqd5HKCIFr0gzkX63r0tH9IY2BuAZwFgw9roqqb9CXIHMTJd3iGdQwhrvjSGDARHGGtsPyeh8znHqRawq-WvRk3YoV5pcjjln_69cFQd1WEIJBIvNTpjXMTDG8pTn0qb4cDCI1W3fMpvb1wLPIeKC-15Tohq0g',
+          image: '/dileep-kumar.jpg',
           order_id: orderData.orderId,
           prefill: {
             name: userName,

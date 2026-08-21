@@ -12,7 +12,7 @@ export default function Footer({ onOpenContactModal }: FooterProps) {
       <div className="max-w-container-max mx-auto px-4 md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="flex flex-col items-center md:items-start gap-2 text-center md:text-left">
           <span className="font-display font-black text-2xl text-white tracking-tight">
-            DS Mentorship
+            DK Mentorship
           </span>
           <p className="font-body text-sm text-on-primary-container/80">
             © {new Date().getFullYear()} Diileep Kumar Sathyadasan. All rights reserved.

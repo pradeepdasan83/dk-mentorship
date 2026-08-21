@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'DS Mentorship | Diileep Kumar Sathyadasan',
+  title: 'DK Mentorship | Diileep Kumar Sathyadasan',
   description: 'Empowering high-level professionals to command executive authority and achieve strategic career growth through curated LinkedIn strategies and 1:1 mentorship.',
-  keywords: ['Executive Mentorship', 'Career Growth', 'LinkedIn Profile Optimization', 'Diileep Kumar Sathyadasan', 'Executive Coaching', 'Google Pay Payments'],
+  keywords: ['Executive Mentorship', 'Career Growth', 'LinkedIn Profile Optimization', 'Diileep Kumar Sathyadasan', 'Executive Coaching', 'Google Pay Payments', 'Razorpay'],
   authors: [{ name: 'Diileep Kumar Sathyadasan' }],
 };
 
