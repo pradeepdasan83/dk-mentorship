@@ -22,21 +22,31 @@ export default function Footer({ onOpenContactModal }: FooterProps) {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-6 text-sm font-medium">
+        <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium">
           <a
-            href="https://www.linkedin.com"
+            href="https://www.linkedin.com/in/dileepsathyan"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white hover:underline decoration-secondary transition-all flex items-center gap-1"
+            className="hover:text-white hover:underline decoration-secondary transition-all flex items-center gap-1.5 font-bold text-tertiary-fixed"
           >
-            <span>LinkedIn</span>
+            <span className="material-symbols-outlined text-base">link</span>
+            <span>LinkedIn Profile</span>
             <span className="material-symbols-outlined text-xs">open_in_new</span>
           </a>
+
+          <a
+            href="tel:+917907206239"
+            className="hover:text-white hover:underline decoration-secondary transition-all flex items-center gap-1.5 font-bold text-white bg-white/10 px-3.5 py-1.5 rounded-full border border-white/20"
+          >
+            <span className="material-symbols-outlined text-base">call</span>
+            <span>Contact DK: +91 7907206239</span>
+          </a>
+
           <button
             onClick={onOpenContactModal}
             className="hover:text-white hover:underline decoration-secondary transition-all"
           >
-            Contact Mentor
+            Send Inquiry
           </button>
         </div>
       </div>
