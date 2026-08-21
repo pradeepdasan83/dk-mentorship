@@ -16,8 +16,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const key_id = process.env.RAZORPAY_KEY_ID || process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_test_TS2XSLY8qBSwzr';
-    const key_secret = process.env.RAZORPAY_KEY_SECRET || 'JCvnS5vXnk7vgZ1FXESib2g1';
+    const key_id = process.env.RAZORPAY_KEY_ID || process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_live_TSHcewpr3QX8nS';
+    const key_secret = process.env.RAZORPAY_KEY_SECRET || 'sf0epO8cfH4KvKY11uIYXLz5';
 
     const instance = new Razorpay({
       key_id,
@@ -46,9 +46,9 @@ export async function POST(request: NextRequest) {
       keyId: key_id,
     });
   } catch (error: any) {
-    console.error('Razorpay order creation error:', error);
+    console.error('Razorpay LIVE order creation error:', error);
     return NextResponse.json(
-      { error: 'Failed to create Razorpay order.', details: error?.message || error },
+      { error: 'Failed to create Razorpay live order.', details: error?.message || error },
       { status: 500 }
     );
   }

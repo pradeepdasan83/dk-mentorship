@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const key_secret = process.env.RAZORPAY_KEY_SECRET || 'JCvnS5vXnk7vgZ1FXESib2g1';
+    const key_secret = process.env.RAZORPAY_KEY_SECRET || 'sf0epO8cfH4KvKY11uIYXLz5';
 
     // Verify HMAC-SHA256 signature
     const generatedSignature = crypto
@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
 
     if (!isValid) {
       return NextResponse.json(
-        { error: 'Razorpay payment signature verification failed.' },
+        { error: 'Razorpay LIVE payment signature verification failed.' },
         { status: 400 }
       );
     }
@@ -70,9 +70,9 @@ export async function POST(request: NextRequest) {
       dbSource: dbResult.source,
     });
   } catch (error: any) {
-    console.error('Razorpay verification error:', error);
+    console.error('Razorpay LIVE verification error:', error);
     return NextResponse.json(
-      { error: 'Failed to verify Razorpay payment.', details: error?.message || error },
+      { error: 'Failed to verify Razorpay live payment.', details: error?.message || error },
       { status: 500 }
     );
   }
